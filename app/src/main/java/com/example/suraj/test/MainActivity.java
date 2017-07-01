@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
             // Showing progress dialog
             mProgressDialog = new ProgressDialog(MainActivity.this);
             mProgressDialog.setMessage("Please wait...");
@@ -94,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                         contact.put("name", name);
                         contact.put("email", email);
                         contact.put("mobile", mobile);
-                        contact.put("address",address);
-                        contact.put("gender",gender);
-                        contact.put("home",home);
+                        contact.put("address", address);
+                        contact.put("gender", gender);
+                        contact.put("home", home);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -140,11 +141,10 @@ public class MainActivity extends AppCompatActivity {
                 mProgressDialog.dismiss();
             //Updating parsed JSON data into ListView
 
-            int rescource[] = {R.id.name,R.id.email, R.id.mobile,R.id.address,R.id.gender,R.id.home};
-            String name[] = {"name", "email", "mobile","address","gender","home"};
+            int rescource[] = {R.id.name, R.id.email, R.id.mobile, R.id.address, R.id.gender, R.id.home};
+            String name[] = {"name", "email", "mobile", "address", "gender", "home"};
 
-            ListAdapter adapter = new SimpleAdapter
-                    (MainActivity.this, contactList, R.layout.list_item, name, rescource);
+            ListAdapter adapter = new SimpleAdapter(MainActivity.this, contactList, R.layout.list_item, name, rescource);
 
             mListView.setAdapter(adapter);
         }

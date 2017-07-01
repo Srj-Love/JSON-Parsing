@@ -1,13 +1,10 @@
 package com.example.suraj.test;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 /**
@@ -16,20 +13,18 @@ import java.net.URL;
 
 class HttpHandler {
 
-    private static final String TAG = HttpHandler.class.getSimpleName();
 
      HttpHandler() {
     }
 
      String makeServiceCall(String reqUrl) {
-        String response = null;
         try {
-            URL url = new URL(reqUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+
+            HttpURLConnection httpURLConnection = (HttpURLConnection)(new URL(reqUrl)).openConnection();
+            httpURLConnection.setRequestMethod("GET");
 
             // read the response
-            InputStream in = new BufferedInputStream(conn.getInputStream());
+            InputStream in = httpURLConnection.getInputStream();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             String line;
@@ -48,11 +43,7 @@ class HttpHandler {
                 }
             }
             return sb.toString();
-        }catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
         return  null;

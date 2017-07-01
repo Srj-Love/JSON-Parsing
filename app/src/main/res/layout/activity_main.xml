@@ -9,6 +9,9 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:divider="#393537"
+        android:dividerHeight="1dp"
+        android:background="#9bcc45"/>
 
 </android.support.constraint.ConstraintLayout>
